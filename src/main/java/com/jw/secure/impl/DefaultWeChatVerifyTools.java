@@ -1,6 +1,6 @@
 package com.jw.secure.impl;
 
-import com.jw.bean.WeChatSecureBean;
+import com.jw.bean.secure.WeChatSecureBean;
 import com.jw.secure.VerifyTools;
 import com.jw.tools.PublicTools;
 

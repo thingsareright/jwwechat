@@ -1,6 +1,6 @@
 package com.jw.handler.impl;
 
-import com.jw.bean.WeChatSecureBean;
+import com.jw.bean.secure.WeChatSecureBean;
 import com.jw.handler.VerifyHandler;
 
 import javax.servlet.http.HttpServletRequest;

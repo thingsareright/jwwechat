@@ -1,6 +1,6 @@
 package com.jw.factory.impl;
 
-import com.jw.bean.WeChatSecureBean;
+import com.jw.bean.secure.WeChatSecureBean;
 import com.jw.factory.SecureBeanFactory;
 import com.jw.tools.PublicTools;
 

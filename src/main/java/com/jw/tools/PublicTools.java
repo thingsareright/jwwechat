@@ -1,5 +1,7 @@
 package com.jw.tools;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -81,6 +83,18 @@ public class PublicTools {
         return t;
     }
 
+    /**
+     * 将对象转换为xml
+     *
+     * @param entityObject
+     * @return
+     */
+    public static String getXmlStrfromEnity(Object entityObject) {
+        XStream xStream = new XStream();
+        xStream.alias("xml", entityObject.getClass());
+        xStream.processAnnotations(entityObject.getClass());
+        return xStream.toXML(entityObject);
+    }
 
 
 }
