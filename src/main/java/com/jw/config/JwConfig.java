@@ -6,6 +6,8 @@ import com.jw.handler.MsgReceiveHandler;
 import com.jw.secure.VerifyTools;
 
 public interface JwConfig {
+
+
     VerifyTools getVerifyTools();
 
     SecureBeanFactory getSecureBeanFactory();
@@ -15,5 +17,7 @@ public interface JwConfig {
     MsgReceiveHandler getMsgReceiveHandler();
 
     String getToken();
+
+    String getApiUrlDomain();
 
 }

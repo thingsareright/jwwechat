@@ -7,6 +7,7 @@ import com.jw.bean.response.WeChatResponseBaseBean;
 import com.jw.bean.secure.WeChatSecureBean;
 import com.jw.config.JwConfig;
 import com.jw.factory.ResponseMsgBuilderFactory;
+import com.jw.factory.UnionInstanceHolder;
 import com.jw.handler.impl.DefaultVerifyHandler;
 import com.jw.tools.PublicTools;
 
@@ -22,7 +23,6 @@ public class WeChatServlet extends HttpServlet {
     private JwConfig jwConfig;
     private final String JW_CONFIG_CLASS = "jwconfigclass";
 
-
     @Override
     public void init() throws ServletException {
         String jwConfigClass = getServletContext().getInitParameter(JW_CONFIG_CLASS);
@@ -32,6 +32,7 @@ public class WeChatServlet extends HttpServlet {
         try {
             Class configClass = Class.forName(jwConfigClass);
             this.jwConfig = (JwConfig) configClass.newInstance();
+            UnionInstanceHolder.setJwConfigInstance(jwConfig);
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | Error e) {
             e.printStackTrace();
             System.exit(0);
@@ -103,7 +104,6 @@ public class WeChatServlet extends HttpServlet {
                         baseBean = PublicTools.getEntityByMap(WeChatEventSubscribeBean.class, entityMap);
                         responseBaseBean = jwConfig.getEventReceiveHandler().onReceiveSubscribeEvent((WeChatEventSubscribeBean) baseBean, ResponseMsgBuilderFactory.getResponseMsgBuilder(baseBean));
                         break;
-
 
                     case WeChatEventBean.EVENT_TYPE_OF_CLICK:
                         baseBean = PublicTools.getEntityByMap(WeChatEventClickBean.class, entityMap);

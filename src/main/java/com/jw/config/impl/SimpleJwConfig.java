@@ -30,6 +30,10 @@ public abstract class SimpleJwConfig implements JwConfig {
         return new DefaultMsgReceiveHandler();
     }
 
+    public String getApiUrlDomain() {
+        return "api.weixin.qq.com";
+    }
+
     public abstract String getToken();
 
 
