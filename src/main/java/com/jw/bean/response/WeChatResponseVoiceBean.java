@@ -1,17 +1,17 @@
 package com.jw.bean.response;
 
+import com.jw.bean.response.inner.Voice;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class WeChatResponseVoiceBean extends WeChatResponseBaseBean {
+    @XStreamAlias("Voice")
+    private Voice voice;
 
-    @XStreamAlias("MediaId")
-    private String mediaId;
-
-    public String getMediaId() {
-        return mediaId;
+    public Voice getVoice() {
+        return voice;
     }
 
-    public void setMediaId(String mediaId) {
-        this.mediaId = mediaId;
+    public void setVoice(Voice voice) {
+        this.voice = voice;
     }
 }

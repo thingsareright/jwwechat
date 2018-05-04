@@ -1,13 +1,12 @@
 package com.jw.tools;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import java.io.InputStream;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -96,5 +95,34 @@ public class PublicTools {
         return xStream.toXML(entityObject);
     }
 
+    /**
+     * 管道方法
+     * @param is
+     * @param os
+     */
+    public static void pipWithNoClose(InputStream is, OutputStream os) throws IOException {
+        BufferedInputStream bis =new BufferedInputStream(is);
+        BufferedOutputStream bos = new BufferedOutputStream(os);
+        byte[] bytes = new byte[1024];
+        int length=0;
+        while ((length=is.read(bytes))!=0){
+            os.write(bytes,0,length);
+        }
+    }
+
+    public static String getStrFromStream(InputStream is) throws IOException {
+        if (null == is) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is,"utf-8"));
+        String line = null;
+
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+        return sb.toString();
+    }
 
 }
